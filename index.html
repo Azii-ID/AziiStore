@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Azii Store</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+      color: #fff;
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    html { scroll-behavior: smooth; }
+
+    /* HEADER - FIX PROFIL PNG */
+    .header {
+      text-align: center;
+      padding: 60px 20px 40px;
+    }
+    .profile-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid transparent;
+  background: linear-gradient(#000, #000) padding-box,
+              linear-gradient(45deg, #00e5ff, #ff00ff) border-box;
+  box-shadow: 0 0 25px rgba(0,229,255,0.6);
+}
+    }
+    .profile-img:hover {
+      box-shadow: 0 0 40px rgba(0,229,255,0.8);
+      transform: scale(1.05);
+    }
+    .header h1 {
+      font-size: 2.2em;
+      font-weight: 700;
+      background: linear-gradient(45deg, #00e5ff, #ff00ff, #00ff88);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradientShift 4s ease infinite;
+      margin-bottom: 10px;
+      text-shadow: 0 0 15px rgba(0,229,255,0.3);
+    }
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    .tagline { color: #aaa; font-size: 16px; transition: color 0.3s ease; }
+    .header:hover .tagline { color: #00e5ff; }
+
+    /* CONTAINER & CARD */
+    .container { max-width: 520px; margin: 0 auto; padding: 20px 15px; }
+    .card {
+      background: rgba(26,26,26,0.9);
+      border-radius: 20px;
+      padding: 25px;
+      margin-bottom: 20px;
+      border: 1px solid rgba(0,229,255,0.2);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 2px;
+      background: linear-gradient(90deg, transparent, #00e5ff, transparent);
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
+    }
+    .card:hover::before { transform: scaleX(1); }
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: #00e5ff;
+      box-shadow: 0 20px 40px rgba(0,229,255,0.2);
+    }
+    .card h2 {
+      font-size: 1.4em;
+      margin-bottom: 15px;
+      color: #00e5ff;
+    }
+
+    /* LIST & SUBTITLE */
+    .card ul { list-style: none; }
+    .card li {
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      transition: all 0.3s ease;
+    }
+    .card li:hover {
+      padding-left: 15px;
+      color: #fff;
+      text-shadow: 0 0 8px rgba(0,229,255,0.3);
+    }
+    .card li b { color: #00ff88; }
+    .contact-subtitle {
+      color: #aaa;
+      font-size: 14px;
+      margin-bottom: 15px;
+      text-align: center;
+      opacity: 0.8;
+    }
+
+    /* BUTTONS */
+    .grid-btn {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 15px;
+    }
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 20px;
+      border-radius: 12px;
+      text-decoration: none;
+      color: white !important;
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s;
+    }
+    .btn:hover::before { left: 100%; }
+    .btn:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    }
+    .full { grid-column: 1 / -1; }
+
+    /* COLORS */
+    .whatsapp { background: linear-gradient(45deg, #25D366, #128C7E); }
+    .telegram { background: linear-gradient(45deg, #0088cc, #0066a1); }
+    .botorder { background: linear-gradient(45deg, #1EB980, #15966D); }
+    .tiktok { background: linear-gradient(45deg, #ff0050, #ee1d52); }
+    .instagram { background: linear-gradient(45deg, #feda75, #d62976, #962fbf); }
+    .facebook { background: linear-gradient(45deg, #1877f2, #0e5a8a); }
+    .group { background: linear-gradient(45deg, #ff9800, #e68900); }
+    .discord { background: linear-gradient(45deg, #5865F2, #4752C4); }
+
+    /* FAQ */
+    .faq-item { margin-bottom: 12px; }
+    .faq-question {
+      width: 100%;
+      background: rgba(34,34,34,0.8);
+      color: white;
+      border: 1px solid rgba(0,229,255,0.3);
+      padding: 15px;
+      border-radius: 12px;
+      text-align: left;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    .faq-question::after {
+      content: '▶';
+      position: absolute;
+      right: 15px;
+      transition: transform 0.3s ease;
+    }
+    .faq-question.active::after { transform: rotate(90deg); }
+    .faq-question:hover {
+      background: rgba(0,229,255,0.1);
+      border-color: #00e5ff;
+    }
+    .faq-question.active {
+      background: rgba(0,229,255,0.2);
+      border-color: #00e5ff;
+    }
+    .faq-answer {
+      background: rgba(0,229,255,0.05);
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.4s ease, padding 0.4s ease;
+      padding: 0 15px;
+      margin-top: 10px;
+      border-left: 3px solid #00e5ff;
+    }
+    .faq-answer.active {
+      max-height: 150px;
+      padding: 15px;
+    }
+
+    /* FOOTER */
+    .footer {
+      text-align: center;
+      padding: 30px 20px;
+      color: #777;
+      font-size: 14px;
+      border-top: 1px solid rgba(0,229,255,0.2);
+      margin-top: 40px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 480px) {
+      .container { padding: 15px 10px; }
+      .header { padding: 40px 15px 30px; }
+      .profile-img { width: 100px !important; height: 100px !important; }
+      .header h1 { font-size: 1.8em; }
+      .card { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+  <img src="pp.png" class="profile-img"
+     onerror="this.src='https://via.placeholder.com/120?text=Azii'">
+  <h1>Azii Store</h1>
+  <p class="tagline">layanan digital terpercaya!</p>
+</header>
+
+  <div class="container">
+    <!-- 1. PRODUK -->
+    <section class="card">
+      <h2>layanan Azii Store</h2>
+      <ul>
+        <li><b>jubel akun game:</b> beli akun? gas!, jual akun? gas! asal murah</li>
+        <li><b>aplikasi premium:</b> buka langganan premium dgn harga murah!</li>
+        <li><b>jasa edit:</b> bisa edit jedag jedug jeder, bisa edit meme, bisa edit adalah pokoknya</li>
+        <li><b>jasa rekber:</b> biar saldo aman ga di embat seller!</li>
+        <p class="contact-subtitle">layanan lain bisa tanya admin!!</p>
+      </ul>
+    </section>
+
+    <!-- 2. KONTAK ADMIN -->
+    <section class="card">
+      <h2>kontak admin</h2>
+      <p class="contact-subtitle">Selain Di Bawah Clone!</p>
+      <div class="grid-btn">
+        <a href="https://wa.me/6283184096035" class="btn whatsapp">WhatsApp</a>
+        <a href="https://t.me/aziistorejb" class="btn telegram">Telegram</a>
+      </div>
+    </section>
+
+    <!-- 3. ITEMKU -->
+    <section class="card">
+  <h2>order di itemku.com</h2>
+  <p class="contact-subtitle" style="margin-bottom: 10px;">order lebih simple dan cepat</p>
+  <a href="https://www.itemku.com/t/azii-store" class="btn full botorder">Itemku</a>
+</section>
+    <!-- 4. KOMUNITAS -->
+    <section class="card">
+      <h2>komunitas</h2>
+      <p class="contact-subtitle">Join komunitas untuk info terbaru!</p>
+      <div class="grid-btn">
+        <a href="https://whatsapp.com/channel/0029Vb2X2c70bIdiwE1xcy08" class="btn full group">saluran wa</a>
+        <a href="#" class="btn full discord">grup jb terbuka (blm tersedia)</a>
+      </div>
+    </section>
+
+    <!-- 5. SOSMED -->
+    <section class="card">
+      <h2>Media Sosial</h2>
+      <div class="grid-btn">
+        <a href="https://www.tiktok.com/@aziistorejb?_r=1&_t=ZS-95VHgUncbcj" class="btn tiktok">TikTok</a>
+        <a href="https://www.instagram.com/aziistorejb?igsh=MWM2aHQ4ZzR5OXk4MQ==" class="btn instagram">Instagram</a>
+        <a href="https://www.facebook.com/share/1CLvgnP1wz/" class="btn facebook">Facebook</a>
+      </div>
+    </section>
+
+    <!-- 6. FAQ -->
+    <section class="card faq">
+      <h2>FAQ</h2>
+      <div class="faq-item">
+        <button class="faq-question">di azii store aja metode pembayaran apa aja? </button>
+        <div class="faq-answer">dana, ovo, gopay, dan qris</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">di azii store produknya bergaransi ga?</button>
+        <div class="faq-answer">kalo ngikutin syarat dan ketentuan pasti ada garansi!</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">jubel di azii store aman ga yaa? </button>
+        <div class="faq-answer">pasti aman cuy, kalo ga aman ga usah beli</div>
+      </div>
+    </section>
+  </div>
+
+  <footer class="footer">© 2024 Azii Store - Trusted Digital Service</footer>
+
+  <script>
+    document.querySelectorAll('.faq-question').forEach(q => {
+      q.addEventListener('click', () => {
+        q.classList.toggle('active');
+        q.nextElementSibling.classList.toggle('active');
+      });
+    });
+  </script>
+</body>
+</html>
