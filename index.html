@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Azii Store - Layanan Digital Terpercaya</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+      color: #fff;
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    html { scroll-behavior: smooth; }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card {
+      animation: fadeInUp 0.5s ease forwards;
+      opacity: 0;
+    }
+    .card:nth-child(1) { animation-delay: 0.1s; }
+    .card:nth-child(2) { animation-delay: 0.2s; }
+    .card:nth-child(3) { animation-delay: 0.3s; }
+    .card:nth-child(4) { animation-delay: 0.4s; }
+    .card:nth-child(5) { animation-delay: 0.5s; }
+    .card:nth-child(6) { animation-delay: 0.6s; }
+
+    .header {
+      text-align: center;
+      padding: 60px 20px 40px;
+      animation: fadeInUp 0.7s ease;
+    }
+    .profile-img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid transparent;
+      background: linear-gradient(#000, #000) padding-box,
+                  linear-gradient(45deg, #00e5ff, #ff00ff) border-box;
+      box-shadow: 0 0 25px rgba(0,229,255,0.6);
+      transition: all 0.3s ease;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(0,229,255,0.4); }
+      70% { box-shadow: 0 0 0 15px rgba(0,229,255,0); }
+      100% { box-shadow: 0 0 0 0 rgba(0,229,255,0); }
+    }
+    .profile-img:hover {
+      box-shadow: 0 0 40px rgba(0,229,255,0.8);
+      transform: scale(1.05);
+      animation: none;
+    }
+    .header h1 {
+      font-size: 2.2em;
+      font-weight: 700;
+      background: linear-gradient(45deg, #00e5ff, #ff00ff, #00ff88);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradientShift 4s ease infinite;
+      margin-bottom: 10px;
+    }
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    .tagline { color: #aaa; font-size: 16px; transition: color 0.3s ease; }
+    .header:hover .tagline { color: #00e5ff; }
+
+    .container { max-width: 520px; margin: 0 auto; padding: 20px 15px; }
+    .card {
+      background: rgba(26,26,26,0.9);
+      border-radius: 20px;
+      padding: 25px;
+      margin-bottom: 20px;
+      border: 1px solid rgba(0,229,255,0.2);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 2px;
+      background: linear-gradient(90deg, transparent, #00e5ff, transparent);
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
+    }
+    .card:hover::before { transform: scaleX(1); }
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: #00e5ff;
+      box-shadow: 0 20px 40px rgba(0,229,255,0.2);
+    }
+    .card h2 {
+      font-size: 1.4em;
+      margin-bottom: 15px;
+      color: #00e5ff;
+    }
+
+    .card ul { list-style: none; }
+    .card li {
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      transition: all 0.3s ease;
+    }
+    .card li:hover {
+      padding-left: 15px;
+      color: #fff;
+      text-shadow: 0 0 8px rgba(0,229,255,0.3);
+    }
+    .card li b { color: #00ff88; }
+    .contact-subtitle {
+      color: #aaa;
+      font-size: 14px;
+      margin-bottom: 15px;
+      text-align: center;
+      opacity: 0.8;
+    }
+
+    /* JAM BUKA TABLE - FIX SABTU MUNCUL */
+    .jam-buka-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 5px;
+    }
+    .jam-buka-table tr {
+      display: table-row;
+    }
+    .jam-buka-table td {
+      padding: 10px 8px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      display: table-cell;
+    }
+    .jam-buka-table td:first-child {
+      font-weight: 600;
+      color: #00e5ff;
+      width: 35%;
+    }
+    .jam-buka-table td:last-child {
+      color: #ddd;
+    }
+    .jam-buka-status {
+      text-align: center;
+      background: rgba(0,229,255,0.15);
+      border-radius: 10px;
+      padding: 10px;
+      margin-top: 15px;
+      font-size: 13px;
+      color: #00e5ff;
+      animation: softPulse 1.5s infinite;
+    }
+    @keyframes softPulse {
+      0%, 100% { opacity: 0.7; }
+      50% { opacity: 1; }
+    }
+
+    .grid-btn {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 15px;
+    }
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 20px;
+      border-radius: 12px;
+      text-decoration: none;
+      color: white !important;
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s;
+    }
+    .btn:hover::before { left: 100%; }
+    .btn:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    }
+    .full { grid-column: 1 / -1; }
+
+    .whatsapp { background: linear-gradient(45deg, #25D366, #128C7E); }
+    .telegram { background: linear-gradient(45deg, #0088cc, #0066a1); }
+    .botorder { background: linear-gradient(45deg, #1EB980, #15966D); }
+    .tiktok { background: linear-gradient(45deg, #ff0050, #ee1d52); }
+    .instagram { background: linear-gradient(45deg, #feda75, #d62976, #962fbf); }
+    .facebook { background: linear-gradient(45deg, #1877f2, #0e5a8a); }
+    .group { background: linear-gradient(45deg, #ff9800, #e68900); }
+    .discord { background: linear-gradient(45deg, #5865F2, #4752C4); }
+
+    .faq-item { margin-bottom: 12px; }
+    .faq-question {
+      width: 100%;
+      background: rgba(34,34,34,0.8);
+      color: white;
+      border: 1px solid rgba(0,229,255,0.3);
+      padding: 15px;
+      border-radius: 12px;
+      text-align: left;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    .faq-question::after {
+      content: '▶';
+      position: absolute;
+      right: 15px;
+      transition: transform 0.3s ease;
+      font-size: 12px;
+    }
+    .faq-question.active::after { transform: rotate(90deg); }
+    .faq-question:hover {
+      background: rgba(0,229,255,0.1);
+      border-color: #00e5ff;
+    }
+    .faq-question.active {
+      background: rgba(0,229,255,0.2);
+      border-color: #00e5ff;
+    }
+    .faq-answer {
+      background: rgba(0,229,255,0.05);
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.4s ease, padding 0.4s ease;
+      padding: 0 15px;
+      margin-top: 10px;
+      border-left: 3px solid #00e5ff;
+    }
+    .faq-answer.active {
+      max-height: 400px;
+      padding: 15px;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 30px 20px;
+      color: #777;
+      font-size: 14px;
+      border-top: 1px solid rgba(0,229,255,0.2);
+      margin-top: 40px;
+    }
+
+    @media (max-width: 480px) {
+      .container { padding: 15px 10px; }
+      .header { padding: 40px 15px 30px; }
+      .profile-img { width: 100px !important; height: 100px !important; }
+      .header h1 { font-size: 1.8em; }
+      .card { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <img src="pp.png" class="profile-img" alt="Foto Profil Azii Store" onerror="this.src='https://via.placeholder.com/120?text=Azii'">
+    <h1>Azii Store</h1>
+    <p class="tagline">Layanan Digital Terpercaya!</p>
+  </header>
+
+  <div class="container">
+    <section class="card">
+      <h2>Layanan Azii Store</h2>
+      <ul>
+        <li><b>Jual beli akun game:</b> Beli akun? Gas! Jual akun? Gas! Asal murah meriah.</li>
+        <li><b>Aplikasi premium:</b> Buka langganan premium dengan harga murah!</li>
+        <li><b>Jasa edit:</b> Bisa edit video jedag jedug, edit meme, dan berbagai kebutuhan editing lainnya.</li>
+        <li><b>Jasa rekber (Rekening Bersama):</b> Biar saldo aman, tidak diembat seller!</li>
+        <p class="contact-subtitle">Layanan lain bisa tanya admin!!</p>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Kontak Admin</h2>
+      <p class="contact-subtitle">Selain di bawah ini, semuanya palsu/clone!</p>
+      <div class="grid-btn">
+        <a href="https://wa.me/6283184096035" class="btn whatsapp">WhatsApp</a>
+        <a href="https://t.me/aziistorejb" class="btn telegram">Telegram</a>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Order di Itemku.com</h2>
+      <p class="contact-subtitle" style="margin-bottom: 10px;">Order lebih simple dan cepat</p>
+      <a href="https://www.itemku.com/t/azii-store" class="btn full botorder">Itemku</a>
+    </section>
+
+    <section class="card">
+      <h2>Komunitas</h2>
+      <p class="contact-subtitle">Join komunitas untuk info terbaru!</p>
+      <div class="grid-btn">
+        <a href="https://whatsapp.com/channel/0029Vb2X2c70bIdiwE1xcy08" class="btn full group">Saluran WhatsApp</a>
+        <a href="#" class="btn full discord">Grup JB Terbuka (Belum Tersedia)</a>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Media Sosial</h2>
+      <div class="grid-btn">
+        <a href="https://www.tiktok.com/@aziistorejb?_r=1&_t=ZS-95VHgUncbcj" class="btn tiktok">TikTok</a>
+        <a href="https://www.instagram.com/aziistorejb?igsh=MWM2aHQ4ZzR5OXk4MQ==" class="btn instagram">Instagram</a>
+        <a href="https://www.facebook.com/share/1CLvgnP1wz/" class="btn facebook">Facebook</a>
+      </div>
+    </section>
+
+    <!-- FAQ - SABTU SUDAH PASTI ADA -->
+    <section class="card faq">
+      <h2>FAQ</h2>
+
+      <div class="faq-item">
+        <button class="faq-question">Metode pembayaran apa saja di Azii Store?</button>
+        <div class="faq-answer">✅ Dana &amp; QRIS</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">Produk di Azii Store bergaransi tidak?</button>
+        <div class="faq-answer">✅ Kalau mengikuti syarat dan ketentuan, pasti ada garansi!</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">Jam Buka Azii Store</button>
+        <div class="faq-answer">
+          <table class="jam-buka-table">
+            <tr><td><b>Minggu</b></td><td>08.00 – 21.00</td></tr>
+            <tr><td><b>Senin</b></td><td>15.00 – 21.00</td></tr>
+            <tr><td><b>Selasa</b></td><td>15.00 – 21.00</td></tr>
+            <tr><td><b>Rabu</b></td><td>15.00 – 21.00</td></tr>
+            <tr><td><b>Kamis</b></td><td>15.00 – 21.00</td></tr>
+            <tr><td><b>Jumat</b></td><td>13.00 – 21.00</td></tr>
+            <tr><td><b>Sabtu</b></td><td>08.00 – 21.00</td></tr>
+          </table>
+          <div class="jam-buka-status">🟢 Admin online sesuai jam di atas</div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer class="footer">© 2024 Azii Store - Trusted Digital Service</footer>
+
+  <script>
+    document.querySelectorAll('.faq-question').forEach(q => {
+      q.addEventListener('click', () => {
+        q.classList.toggle('active');
+        q.nextElementSibling.classList.toggle('active');
+      });
+    });
+  </script>
+</body>
+</html>
