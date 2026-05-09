@@ -2,278 +2,338 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>Azii Store - Layanan Digital Terpercaya</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
-      color: #fff;
-      line-height: 1.6;
+      background: linear-gradient(135deg, #0a0a0a 0%, #121212 100%);
+      color: #f0f0f0;
+      line-height: 1.5;
       min-height: 100vh;
       overflow-x: hidden;
     }
-    html { scroll-behavior: smooth; }
 
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
+    @keyframes fadeSlideUp {
+      0% {
+        opacity: 0;
+        transform: translateY(35px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes softGlow {
+      0% { box-shadow: 0 0 0 0 rgba(0, 229, 255, 0.3); }
+      70% { box-shadow: 0 0 0 12px rgba(0, 229, 255, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(0, 229, 255, 0); }
+    }
+
+    @keyframes gradientText {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     .card {
-      animation: fadeInUp 0.5s ease forwards;
+      animation: fadeSlideUp 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
       opacity: 0;
     }
-    .card:nth-child(1) { animation-delay: 0.1s; }
-    .card:nth-child(2) { animation-delay: 0.2s; }
-    .card:nth-child(3) { animation-delay: 0.3s; }
-    .card:nth-child(4) { animation-delay: 0.4s; }
-    .card:nth-child(5) { animation-delay: 0.5s; }
-    .card:nth-child(6) { animation-delay: 0.6s; }
+
+    .card:nth-child(1) { animation-delay: 0.05s; }
+    .card:nth-child(2) { animation-delay: 0.15s; }
+    .card:nth-child(3) { animation-delay: 0.25s; }
+    .card:nth-child(4) { animation-delay: 0.35s; }
+    .card:nth-child(5) { animation-delay: 0.45s; }
 
     .header {
       text-align: center;
-      padding: 60px 20px 40px;
-      animation: fadeInUp 0.7s ease;
+      padding: 45px 20px 30px;
+      animation: fadeSlideUp 0.6s ease;
     }
+
     .profile-img {
       width: 120px;
       height: 120px;
       border-radius: 50%;
       object-fit: cover;
-      border: 3px solid transparent;
-      background: linear-gradient(#000, #000) padding-box,
-                  linear-gradient(45deg, #00e5ff, #ff00ff) border-box;
-      box-shadow: 0 0 25px rgba(0,229,255,0.6);
-      transition: all 0.3s ease;
-      animation: pulse 2s infinite;
+      background: #1e1e2f;
+      border: 2px solid rgba(0, 229, 255, 0.5);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      transition: transform 0.3s ease, box-shadow 0.3s;
+      animation: softGlow 2.2s infinite;
     }
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(0,229,255,0.4); }
-      70% { box-shadow: 0 0 0 15px rgba(0,229,255,0); }
-      100% { box-shadow: 0 0 0 0 rgba(0,229,255,0); }
-    }
+
     .profile-img:hover {
-      box-shadow: 0 0 40px rgba(0,229,255,0.8);
-      transform: scale(1.05);
+      transform: scale(1.03);
+      box-shadow: 0 0 28px rgba(0, 229, 255, 0.7);
       animation: none;
     }
+
     .header h1 {
-      font-size: 2.2em;
-      font-weight: 700;
-      background: linear-gradient(45deg, #00e5ff, #ff00ff, #00ff88);
-      background-size: 300% 300%;
+      font-size: 2.4rem;
+      font-weight: 800;
+      background: linear-gradient(120deg, #00e5ff, #a0f2ff, #ff44cc);
+      background-size: 250% auto;
       -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
       background-clip: text;
-      animation: gradientShift 4s ease infinite;
-      margin-bottom: 10px;
+      -webkit-text-fill-color: transparent;
+      animation: gradientText 4s linear infinite;
+      margin-top: 12px;
+      letter-spacing: -0.3px;
     }
-    @keyframes gradientShift {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-    }
-    .tagline { color: #aaa; font-size: 16px; transition: color 0.3s ease; }
-    .header:hover .tagline { color: #00e5ff; }
 
-    .container { max-width: 520px; margin: 0 auto; padding: 20px 15px; }
+    .tagline {
+      color: #bfbfbf;
+      font-size: 0.95rem;
+      font-weight: 500;
+      background: rgba(0, 229, 255, 0.1);
+      display: inline-block;
+      padding: 4px 18px;
+      border-radius: 40px;
+      backdrop-filter: blur(2px);
+    }
+
+    .container {
+      max-width: 550px;
+      margin: 0 auto;
+      padding: 10px 18px 30px;
+    }
+
     .card {
-      background: rgba(26,26,26,0.9);
-      border-radius: 20px;
-      padding: 25px;
-      margin-bottom: 20px;
-      border: 1px solid rgba(0,229,255,0.2);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
+      background: rgba(18, 18, 24, 0.85);
+      backdrop-filter: blur(4px);
+      border-radius: 28px;
+      padding: 22px 24px;
+      margin-bottom: 22px;
+      border: 1px solid rgba(0, 229, 255, 0.2);
+      transition: all 0.25s ease;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
     }
-    .card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 2px;
-      background: linear-gradient(90deg, transparent, #00e5ff, transparent);
-      transform: scaleX(0);
-      transition: transform 0.4s ease;
-    }
-    .card:hover::before { transform: scaleX(1); }
+
     .card:hover {
-      transform: translateY(-8px);
-      border-color: #00e5ff;
-      box-shadow: 0 20px 40px rgba(0,229,255,0.2);
+      border-color: rgba(0, 229, 255, 0.6);
+      transform: translateY(-4px);
+      background: rgba(20, 20, 30, 0.92);
+      box-shadow: 0 20px 35px rgba(0, 0, 0, 0.5);
     }
+
     .card h2 {
-      font-size: 1.4em;
-      margin-bottom: 15px;
-      color: #00e5ff;
+      font-size: 1.6rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #ffffff, #00e5ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 16px;
+      border-left: 4px solid #00e5ff;
+      padding-left: 14px;
+      letter-spacing: -0.2px;
     }
 
-    .card ul { list-style: none; }
-    .card li {
-      padding: 12px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      transition: all 0.3s ease;
-    }
-    .card li:hover {
-      padding-left: 15px;
-      color: #fff;
-      text-shadow: 0 0 8px rgba(0,229,255,0.3);
-    }
-    .card li b { color: #00ff88; }
     .contact-subtitle {
+      font-size: 0.8rem;
       color: #aaa;
-      font-size: 14px;
-      margin-bottom: 15px;
+      margin-top: 12px;
       text-align: center;
-      opacity: 0.8;
-    }
-
-    /* JAM BUKA TABLE - FIX SABTU MUNCUL */
-    .jam-buka-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 5px;
-    }
-    .jam-buka-table tr {
-      display: table-row;
-    }
-    .jam-buka-table td {
-      padding: 10px 8px;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      display: table-cell;
-    }
-    .jam-buka-table td:first-child {
-      font-weight: 600;
-      color: #00e5ff;
-      width: 35%;
-    }
-    .jam-buka-table td:last-child {
-      color: #ddd;
-    }
-    .jam-buka-status {
-      text-align: center;
-      background: rgba(0,229,255,0.15);
-      border-radius: 10px;
-      padding: 10px;
-      margin-top: 15px;
-      font-size: 13px;
-      color: #00e5ff;
-      animation: softPulse 1.5s infinite;
-    }
-    @keyframes softPulse {
-      0%, 100% { opacity: 0.7; }
-      50% { opacity: 1; }
+      background: rgba(0,0,0,0.3);
+      padding: 5px 10px;
+      border-radius: 60px;
+      display: inline-block;
+      width: auto;
     }
 
     .grid-btn {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-top: 15px;
+      gap: 14px;
+      margin: 16px 0 8px;
     }
+
     .btn {
       display: flex;
       align-items: center;
-      justify-content: center;
-      padding: 14px 20px;
-      border-radius: 12px;
+      justify-content: space-between;
+      padding: 12px 18px;
+      border-radius: 60px;
       text-decoration: none;
-      color: white !important;
-      font-size: 14px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.3px;
+      transition: 0.25s ease;
+      color: white;
+      background: rgba(40,40,55,0.9);
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 5px 12px rgba(0,0,0,0.3);
+    }
+
+    .btn .social-name {
+      flex: 1;
+      text-align: left;
       font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      position: relative;
-      overflow: hidden;
     }
-    .btn::before {
-      content: '';
-      position: absolute;
-      top: 0; left: -100%;
-      width: 100%; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-      transition: left 0.5s;
+
+    .btn .badge {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 50px;
+      background: rgba(0,0,0,0.45);
+      backdrop-filter: blur(2px);
+      min-width: 48px;
+      text-align: center;
     }
-    .btn:hover::before { left: 100%; }
+
+    .btn.whatsapp { background: linear-gradient(105deg, #25D366, #128C7E); }
+    .btn.telegram { background: linear-gradient(105deg, #0088cc, #0066a1); }
+    .btn.botorder { background: linear-gradient(105deg, #1EB980, #0f8b63); }
+    .btn.tiktok { background: linear-gradient(105deg, #fe2c55, #cc1f48); }
+    .btn.instagram { background: linear-gradient(105deg, #f58529, #dd2a7b, #8134af); }
+    .btn.facebook { background: linear-gradient(105deg, #1877f2, #0e5a8a); }
+    .btn.group { background: linear-gradient(105deg, #ff9800, #f45c43); }
+    .btn.discord { background: linear-gradient(105deg, #5865F2, #404EED); }
+
     .btn:hover {
-      transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+      transform: translateY(-3px);
+      filter: brightness(1.05);
+      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
     }
-    .full { grid-column: 1 / -1; }
 
-    .whatsapp { background: linear-gradient(45deg, #25D366, #128C7E); }
-    .telegram { background: linear-gradient(45deg, #0088cc, #0066a1); }
-    .botorder { background: linear-gradient(45deg, #1EB980, #15966D); }
-    .tiktok { background: linear-gradient(45deg, #ff0050, #ee1d52); }
-    .instagram { background: linear-gradient(45deg, #feda75, #d62976, #962fbf); }
-    .facebook { background: linear-gradient(45deg, #1877f2, #0e5a8a); }
-    .group { background: linear-gradient(45deg, #ff9800, #e68900); }
-    .discord { background: linear-gradient(45deg, #5865F2, #4752C4); }
+    .full {
+      grid-column: 1 / -1;
+    }
 
-    .faq-item { margin-bottom: 12px; }
+    /* FAQ - RAPI */
+    .faq-item {
+      background: rgba(0, 0, 0, 0.25);
+      border-radius: 20px;
+      margin-bottom: 14px;
+      border: 1px solid rgba(0, 229, 255, 0.15);
+    }
+
+    .faq-item:hover {
+      border-color: rgba(0, 229, 255, 0.4);
+      background: rgba(0, 229, 255, 0.03);
+    }
+
     .faq-question {
       width: 100%;
-      background: rgba(34,34,34,0.8);
-      color: white;
-      border: 1px solid rgba(0,229,255,0.3);
-      padding: 15px;
-      border-radius: 12px;
+      background: transparent;
+      border: none;
+      padding: 18px 22px;
+      font-size: 1rem;
+      font-weight: 600;
       text-align: left;
+      color: #ffffff;
       cursor: pointer;
-      font-size: 15px;
-      font-weight: 500;
-      transition: all 0.3s ease;
-      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'Poppins', sans-serif;
+      border-radius: 20px;
     }
-    .faq-question::after {
-      content: '▶';
-      position: absolute;
-      right: 15px;
+
+    .faq-question .faq-icon {
+      margin-right: 8px;
+      color: #00e5ff;
+    }
+
+    .faq-question .arrow-icon {
       transition: transform 0.3s ease;
-      font-size: 12px;
+      background: rgba(0, 229, 255, 0.1);
+      width: 28px;
+      height: 28px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 30px;
     }
-    .faq-question.active::after { transform: rotate(90deg); }
+
+    .faq-question.active .arrow-icon {
+      transform: rotate(90deg);
+    }
+
     .faq-question:hover {
-      background: rgba(0,229,255,0.1);
-      border-color: #00e5ff;
+      background: rgba(0, 229, 255, 0.08);
     }
-    .faq-question.active {
-      background: rgba(0,229,255,0.2);
-      border-color: #00e5ff;
-    }
+
     .faq-answer {
-      background: rgba(0,229,255,0.05);
-      overflow: hidden;
       max-height: 0;
-      transition: max-height 0.4s ease, padding 0.4s ease;
-      padding: 0 15px;
-      margin-top: 10px;
-      border-left: 3px solid #00e5ff;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.2s;
+      padding: 0 20px;
+      background: rgba(0, 0, 0, 0.15);
+      border-top: 0px solid transparent;
+      border-radius: 0 0 18px 18px;
     }
+
     .faq-answer.active {
-      max-height: 400px;
-      padding: 15px;
+      max-height: 450px;
+      padding: 8px 20px 20px 20px;
+      border-top: 1px solid rgba(0, 229, 255, 0.25);
+    }
+
+    .answer-content {
+      color: #ddd;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .jam-buka-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 8px 0 12px;
+    }
+
+    .jam-buka-table td {
+      padding: 8px 4px;
+      border-bottom: 1px dashed rgba(255,255,255,0.1);
+      font-size: 0.85rem;
+    }
+
+    .jam-buka-table td:first-child {
+      font-weight: 700;
+      color: #75e6ff;
+      width: 40%;
+    }
+
+    .jam-buka-status {
+      background: rgba(0, 229, 255, 0.12);
+      border-radius: 40px;
+      padding: 8px 12px;
+      text-align: center;
+      font-size: 0.8rem;
+      margin-top: 12px;
+      color: #7effe6;
     }
 
     .footer {
       text-align: center;
       padding: 30px 20px;
-      color: #777;
-      font-size: 14px;
-      border-top: 1px solid rgba(0,229,255,0.2);
-      margin-top: 40px;
+      font-size: 0.75rem;
+      color: #6a6a7a;
+      border-top: 1px solid rgba(0, 229, 255, 0.15);
+      margin-top: 20px;
     }
 
     @media (max-width: 480px) {
-      .container { padding: 15px 10px; }
-      .header { padding: 40px 15px 30px; }
-      .profile-img { width: 100px !important; height: 100px !important; }
-      .header h1 { font-size: 1.8em; }
-      .card { padding: 20px; }
+      .container { padding: 10px 14px 25px; }
+      .header { padding: 35px 15px 20px; }
+      .profile-img { width: 100px; height: 100px; }
+      .header h1 { font-size: 1.9rem; }
+      .card { padding: 18px 18px; }
+      .faq-question { padding: 14px 16px; font-size: 0.9rem; }
+      .btn { padding: 10px 14px; }
+      .btn .badge { padding: 3px 8px; min-width: 44px; }
     }
   </style>
 </head>
@@ -285,77 +345,107 @@
   </header>
 
   <div class="container">
-    <section class="card">
-      <h2>Layanan Azii Store</h2>
-      <ul>
-        <li><b>Jual beli akun game:</b> Beli akun? Gas! Jual akun? Gas! Asal murah meriah.</li>
-        <li><b>Aplikasi premium:</b> Buka langganan premium dengan harga murah!</li>
-        <li><b>Jasa edit:</b> Bisa edit video jedag jedug, edit meme, dan berbagai kebutuhan editing lainnya.</li>
-        <li><b>Jasa rekber (Rekening Bersama):</b> Biar saldo aman, tidak diembat seller!</li>
-        <p class="contact-subtitle">Layanan lain bisa tanya admin!!</p>
-      </ul>
-    </section>
-
+    <!-- Kontak Admin -->
     <section class="card">
       <h2>Kontak Admin</h2>
       <p class="contact-subtitle">Selain di bawah ini, semuanya palsu/clone!</p>
       <div class="grid-btn">
-        <a href="https://wa.me/6283184096035" class="btn whatsapp" style="display: flex; justify-content: space-between; align-items: center;">WhatsApp <span style="font-size:11px; background:#00ff8844; padding:2px 10px; border-radius:20px;">ON</span></a>
-        <a href="#" class="btn telegram" style="display: flex; justify-content: space-between; align-items: center;">Telegram <span style="font-size:11px; background:#ff444488; padding:2px 10px; border-radius:20px;">OFF</span></a>
+        <a href="https://wa.me/6283184096035" class="btn whatsapp">
+          <span class="social-name">WhatsApp</span>
+          <span class="badge">ON</span>
+        </a>
+        <a href="#" class="btn telegram">
+          <span class="social-name">Telegram</span>
+          <span class="badge">OFF</span>
+        </a>
       </div>
     </section>
 
+    <!-- Itemku -->
     <section class="card">
       <h2>Order di Itemku.com</h2>
       <p class="contact-subtitle" style="margin-bottom: 10px;">Order lebih simple dan cepat</p>
-      <a href="https://www.itemku.com/t/azii-store" class="btn full botorder">Itemku</a>
+      <a href="https://www.itemku.com/t/azii-store" class="btn full botorder" style="justify-content: center; gap: 10px;">Itemku →</a>
     </section>
 
-   <section class="card">
-  <h2>Komunitas</h2>
-  <p class="contact-subtitle">Join komunitas untuk info terbaru!</p>
-  <div class="grid-btn">
-    <a href="https://whatsapp.com/channel/0029Vb2X2c70bIdiwE1xcy08" class="btn full group">Saluran WhatsApp</a>
-    <a href="#" class="btn full discord">Grup JB Terbuka <span style="font-size:11px; opacity:0.7;">(Belum Tersedia)</span></a>
-  </div>
-</section>
-
+    <!-- Komunitas -->
     <section class="card">
-  <h2>Media Sosial</h2>
-  <div class="grid-btn">
-    <a href="https://www.tiktok.com/@aziistorejb" class="btn tiktok">TikTok <span style="font-size:11px; background:#00ff8844; padding:2px 8px; border-radius:20px;">ON</span></a>
-    <a href="#" class="btn instagram" style="opacity:0.7;">Instagram <span style="font-size:11px; background:#ff444444; padding:2px 8px; border-radius:20px;">OFF</span></a>
-    <a href="#" class="btn facebook" style="opacity:0.7;">Facebook <span style="font-size:11px; background:#ff444444; padding:2px 8px; border-radius:20px;">OFF</span></a>
-  </div>
-</section>
+      <h2>Komunitas</h2>
+      <p class="contact-subtitle">Join komunitas untuk info terbaru!</p>
+      <div class="grid-btn">
+        <a href="https://whatsapp.com/channel/0029Vb2X2c70bIdiwE1xcy08" class="btn full group" style="justify-content: space-between;">
+          <span class="social-name">Saluran WhatsApp</span>
+          <span class="badge">AKTIF</span>
+        </a>
+        <a href="#" class="btn full discord" style="justify-content: space-between;">
+          <span class="social-name">Grup JB Terbuka</span>
+          <span class="badge">Segera</span>
+        </a>
+      </div>
+    </section>
 
-    <!-- FAQ - SABTU SUDAH PASTI ADA -->
+    <!-- MEDIA SOSIAL - DIPERBAIKI SIMETRIS, TIDAK NGACO -->
+    <section class="card">
+      <h2>Media Sosial</h2>
+      <div class="grid-btn">
+        <a href="https://www.tiktok.com/@aziistorejb" class="btn tiktok">
+          <span class="social-name">TikTok</span>
+          <span class="badge">ON</span>
+        </a>
+        <a href="#" class="btn instagram">
+          <span class="social-name">Instagram</span>
+          <span class="badge">OFF</span>
+        </a>
+        <a href="#" class="btn facebook">
+          <span class="social-name">Facebook</span>
+          <span class="badge">OFF</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- FAQ -->
     <section class="card faq">
       <h2>FAQ</h2>
+      <div class="faq-section">
+        <div class="faq-item">
+          <button class="faq-question">
+            <span><span class="faq-icon">❓</span> Metode pembayaran apa saja yang tersedia di Azii Store?</span>
+            <span class="arrow-icon">▶</span>
+          </button>
+          <div class="faq-answer">
+            <div class="answer-content">✅ <strong>Dana &amp; QRIS</strong></div>
+          </div>
+        </div>
 
-      <div class="faq-item">
-        <button class="faq-question">Metode pembayaran apa saja yang tersedia di Azii Store?</button>
-        <div class="faq-answer">✅ Dana &amp; QRIS</div>
-      </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span><span class="faq-icon">🛡️</span> Apakah ada garansi untuk produk di Azii Store?</span>
+            <span class="arrow-icon">▶</span>
+          </button>
+          <div class="faq-answer">
+            <div class="answer-content">✅ Ada garansi sesuai syarat & ketentuan</div>
+          </div>
+        </div>
 
-      <div class="faq-item">
-        <button class="faq-question">Apakah ada garansi untuk produk di Azii Store?</button>
-        <div class="faq-answer">✅ Kalau mengikuti syarat dan ketentuan, pasti ada garansi!</div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question">Mulai jam berapa Azii Store beroperasi?</button>
-        <div class="faq-answer">
-          <table class="jam-buka-table">
-            <tr><td><b>Minggu</b></td><td>08.00 – 21.00</td></tr>
-            <tr><td><b>Senin</b></td><td>15.00 – 21.00</td></tr>
-            <tr><td><b>Selasa</b></td><td>15.00 – 21.00</td></tr>
-            <tr><td><b>Rabu</b></td><td>15.00 – 21.00</td></tr>
-            <tr><td><b>Kamis</b></td><td>15.00 – 21.00</td></tr>
-            <tr><td><b>Jumat</b></td><td>13.00 – 21.00</td></tr>
-            <tr><td><b>Sabtu</b></td><td>08.00 – 21.00</td></tr>
-          </table>
-          <div class="jam-buka-status">🟢 Admin online sesuai jam di atas</div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span><span class="faq-icon">⏰</span> Mulai jam berapa Azii Store beroperasi?</span>
+            <span class="arrow-icon">▶</span>
+          </button>
+          <div class="faq-answer">
+            <div class="answer-content">
+              <table class="jam-buka-table">
+                <tr><td><b>Minggu</b></td><td>08.00 – 21.00</td></tr>
+                <tr><td><b>Senin</b></td><td>15.00 – 21.00</td></tr>
+                <tr><td><b>Selasa</b></td><td>15.00 – 21.00</td></tr>
+                <tr><td><b>Rabu</b></td><td>15.00 – 21.00</td></tr>
+                <tr><td><b>Kamis</b></td><td>15.00 – 21.00</td></tr>
+                <tr><td><b>Jumat</b></td><td>13.00 – 21.00</td></tr>
+                <tr><td><b>Sabtu</b></td><td>08.00 – 21.00</td></tr>
+              </table>
+              <div class="jam-buka-status">🟢 Admin online sesuai jam di atas</div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -364,10 +454,13 @@
   <footer class="footer">© 2024 Azii Store - Trusted Digital Service</footer>
 
   <script>
-    document.querySelectorAll('.faq-question').forEach(q => {
-      q.addEventListener('click', () => {
-        q.classList.toggle('active');
-        q.nextElementSibling.classList.toggle('active');
+    document.querySelectorAll('.faq-question').forEach(button => {
+      button.addEventListener('click', () => {
+        button.classList.toggle('active');
+        const answer = button.nextElementSibling;
+        if (answer && answer.classList.contains('faq-answer')) {
+          answer.classList.toggle('active');
+        }
       });
     });
   </script>
