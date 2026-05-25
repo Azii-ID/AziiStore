@@ -12,6 +12,10 @@
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: 'Poppins', sans-serif;
       background: linear-gradient(135deg, #0a0a0a 0%, #121212 100%);
@@ -19,6 +23,7 @@
       line-height: 1.5;
       min-height: 100vh;
       overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
     }
 
     @keyframes fadeSlideUp {
@@ -53,7 +58,6 @@
     .card:nth-child(2) { animation-delay: 0.15s; }
     .card:nth-child(3) { animation-delay: 0.25s; }
     .card:nth-child(4) { animation-delay: 0.35s; }
-    .card:nth-child(5) { animation-delay: 0.45s; }
 
     .header {
       text-align: center;
@@ -118,6 +122,7 @@
       border: 1px solid rgba(0, 229, 255, 0.2);
       transition: all 0.25s ease;
       box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+      will-change: transform;
     }
 
     .card:hover {
@@ -154,7 +159,7 @@
 
     .grid-btn {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
       gap: 14px;
       margin: 16px 0 8px;
     }
@@ -162,45 +167,29 @@
     .btn {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 12px 18px;
+      justify-content: center;
+      padding: 14px 18px;
       border-radius: 60px;
       text-decoration: none;
       font-weight: 700;
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       letter-spacing: 0.3px;
       transition: 0.25s ease;
       color: white;
       background: rgba(40,40,55,0.9);
       border: 1px solid rgba(255,255,255,0.1);
       box-shadow: 0 5px 12px rgba(0,0,0,0.3);
+      gap: 10px;
     }
 
     .btn .social-name {
-      flex: 1;
-      text-align: left;
       font-weight: 600;
     }
 
-    .btn .badge {
-      font-size: 10px;
-      font-weight: 700;
-      padding: 4px 12px;
-      border-radius: 50px;
-      background: rgba(0,0,0,0.45);
-      backdrop-filter: blur(2px);
-      min-width: 48px;
-      text-align: center;
-    }
-
     .btn.whatsapp { background: linear-gradient(105deg, #25D366, #128C7E); }
-    .btn.telegram { background: linear-gradient(105deg, #0088cc, #0066a1); }
     .btn.botorder { background: linear-gradient(105deg, #1EB980, #0f8b63); }
-    .btn.tiktok { background: linear-gradient(105deg, #fe2c55, #cc1f48); }
-    .btn.instagram { background: linear-gradient(105deg, #f58529, #dd2a7b, #8134af); }
-    .btn.facebook { background: linear-gradient(105deg, #1877f2, #0e5a8a); }
     .btn.group { background: linear-gradient(105deg, #ff9800, #f45c43); }
-    .btn.discord { background: linear-gradient(105deg, #5865F2, #404EED); }
+    .btn.tiktok { background: linear-gradient(105deg, #fe2c55, #cc1f48); }
 
     .btn:hover {
       transform: translateY(-3px);
@@ -212,7 +201,7 @@
       grid-column: 1 / -1;
     }
 
-    /* FAQ - RAPI */
+    /* FAQ */
     .faq-item {
       background: rgba(0, 0, 0, 0.25);
       border-radius: 20px;
@@ -256,6 +245,7 @@
       align-items: center;
       justify-content: center;
       border-radius: 30px;
+      font-size: 10px;
     }
 
     .faq-question.active .arrow-icon {
@@ -332,8 +322,7 @@
       .header h1 { font-size: 1.9rem; }
       .card { padding: 18px 18px; }
       .faq-question { padding: 14px 16px; font-size: 0.9rem; }
-      .btn { padding: 10px 14px; }
-      .btn .badge { padding: 3px 8px; min-width: 44px; }
+      .btn { padding: 12px 14px; }
     }
   </style>
 </head>
@@ -352,11 +341,6 @@
       <div class="grid-btn">
         <a href="https://wa.me/6283184096035" class="btn whatsapp">
           <span class="social-name">WhatsApp</span>
-          <span class="badge">ON</span>
-        </a>
-        <a href="#" class="btn telegram">
-          <span class="social-name">Telegram</span>
-          <span class="badge">OFF</span>
         </a>
       </div>
     </section>
@@ -364,8 +348,8 @@
     <!-- Itemku -->
     <section class="card">
       <h2>Order di Itemku.com</h2>
-      <p class="contact-subtitle" style="margin-bottom: 10px;">Order lebih simple dan cepat</p>
-      <a href="https://www.itemku.com/t/azii-store" class="btn full botorder" style="justify-content: center; gap: 10px;">Itemku →</a>
+      <p class="contact-subtitle" style="margin-bottom: 10px;">Order lebih simple, cepat, dan aman</p>
+      <a href="https://www.itemku.com/t/azii-store" class="btn full botorder" style="justify-content: center;">Itemku →</a>
     </section>
 
     <!-- Komunitas -->
@@ -375,30 +359,16 @@
       <div class="grid-btn">
         <a href="https://whatsapp.com/channel/0029Vb2X2c70bIdiwE1xcy08" class="btn full group" style="justify-content: space-between;">
           <span class="social-name">Saluran WhatsApp</span>
-          <span class="badge">AKTIF</span>
-        </a>
-        <a href="#" class="btn full discord" style="justify-content: space-between;">
-          <span class="social-name">Grup JB Terbuka</span>
-          <span class="badge">Segera</span>
         </a>
       </div>
     </section>
 
-    <!-- MEDIA SOSIAL - DIPERBAIKI SIMETRIS, TIDAK NGACO -->
+    <!-- MEDIA SOSIAL -->
     <section class="card">
       <h2>Media Sosial</h2>
       <div class="grid-btn">
         <a href="https://www.tiktok.com/@aziistorejb" class="btn tiktok">
           <span class="social-name">TikTok</span>
-          <span class="badge">ON</span>
-        </a>
-        <a href="#" class="btn instagram">
-          <span class="social-name">Instagram</span>
-          <span class="badge">OFF</span>
-        </a>
-        <a href="#" class="btn facebook">
-          <span class="social-name">Facebook</span>
-          <span class="badge">OFF</span>
         </a>
       </div>
     </section>
@@ -413,7 +383,7 @@
             <span class="arrow-icon">▶</span>
           </button>
           <div class="faq-answer">
-            <div class="answer-content">✅ <strong>Dana &amp; QRIS</strong></div>
+            <div class="answer-content">✅ <strong>E-WALLET, QRIS, DAN BANK</strong></div>
           </div>
         </div>
 
